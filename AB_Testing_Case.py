@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-# !pip install statsmodels            Kurulmalı !
+# !pip install statsmodels           
 import statsmodels.stats.api as sms
 from scipy.stats import ttest_1samp, shapiro, levene, ttest_ind, mannwhitneyu, \
     pearsonr, spearmanr, kendalltau, f_oneway, kruskal
@@ -41,6 +41,7 @@ pd.set_option('display.float_format', lambda x: '%.5f' % x)
 
 # Adım 1:  ab_testing_data.xlsx adlı kontrol ve test grubu verilerinden oluşan veri setini okutunuz.
 #          Kontrol ve test grubu verilerini ayrı değişkenlere atayınız.
+
 control_group = pd.read_excel("Measurement_Problems/Case2 - AB Testing/ab_testing.xlsx", sheet_name='Control Group')
 test_group = pd.read_excel("Measurement_Problems/Case2 - AB Testing/ab_testing.xlsx", sheet_name='Test Group')
 
@@ -80,7 +81,8 @@ AB.head()
 # Adım 2: Kontrol ve test grubu için purchase(kazanç) ortalamalarını analiz ediniz
 control_group["Purchase"].mean()     # 550.894
 test_group["Purchase"].mean()        # 582.106
-# Fark var gibi fakat şans eseri mi bakalım.
+# Fark var gibi fakat şans eseri mi?
+
 
 #####################################################
 # GÖREV 3: Hipotez Testinin Gerçekleştirilmesi
@@ -103,6 +105,7 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
 # Normallik varsayımı reddedilemedi. p değerleri 0.05'ten büyük.
 
+
 # Varyans homojenliği
 
 test_stat, pvalue = levene(AB.A,AB.B)
@@ -110,9 +113,11 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 # p-value = 0.1083  olduğu için H0 reddedilemedi.
 
 
+
 # Adım 2: Normallik Varsayımı ve Varyans Homojenliği sonuçlarına göre uygun testi seçiniz.
 
 # Varsayımlar sağlandığı için bağımsız iki örneklem T Testi uygulanır.
+
 
 
 # Adım 3: Test sonucunda elde edilen p_value değerini göz önünde bulundurarak kontrol ve test grubu satın alma
@@ -120,8 +125,8 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
 test_stat, pvalue = ttest_ind(AB.A,AB.B,equal_var=True)
 print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
-# p-value = 0.3493  değeri 0.05'ten büyük olduğu için H0 reddedilemez.
-# Yani evet iki teklif arasında istatistik olarak anlamlı bir fark yoktur.
+# p-value = 0.3493  değeri 0.05'ten büyük olduğu için H0 reddedilemez. İki teklif arasında istatistiksel olarak anlamlı bir fark yoktur.
+
 
 
 ##############################################################
@@ -130,10 +135,9 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 
 # Adım 1: Hangi testi kullandınız, sebeplerini belirtiniz.
 
-# İki grubun ortalamaları arasında fark olup olmadığını istatistik açıdan kanıtlamak istedik.
-# Normallik varsayımı ve varyans homojenliği sonuçlarında hipotez reddedilemedi.
-# Varsayımlar sağlandığı için bağımsız iki örneklem T testi kullandık.
-# Bunun sonucunda elde edilen p değeri 0.05'ten büyük olduğu için hipotezimiz istatistiksel olarak  %95 güvenle doğrulandı.
+# İki grubun ortalamaları arasında fark olup olmadığını istatistiksel açıdan kanıtlamak istedik.
+# Normallik varsayımı ve varyans homojenliği sonuçlarında hipotez reddedilemedi. Varsayımlar sağlandığı için bağımsız iki örneklem T testi kullandık.
+# Bunun sonucunda elde edilen p değeri 0.05'ten büyük olduğu için hipotezimiz istatistiksel olarak %95 güvenle doğrulandı.
 # Yani iki grubun ortalamaları arasında anlamlı bir fark yoktur.
 
 
