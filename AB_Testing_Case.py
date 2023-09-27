@@ -1,41 +1,7 @@
 #####################################################
-# AB Testi ile BiddingYöntemlerinin Dönüşümünün Karşılaştırılması
-#####################################################
-import pandas as pd
-
-#####################################################
-# İş Problemi
+# AB Testi ile Bidding Yöntemlerinin Dönüşümünün Karşılaştırılması
 #####################################################
 
-# Facebook kısa süre önce mevcut "maximumbidding" adı verilen teklif verme türüne alternatif
-# olarak yeni bir teklif türü olan "average bidding"’i tanıttı. Müşterilerimizden biri olan bombabomba.com,
-# bu yeni özelliği test etmeye karar verdi veaveragebidding'in maximumbidding'den daha fazla dönüşüm
-# getirip getirmediğini anlamak için bir A/B testi yapmak istiyor.A/B testi 1 aydır devam ediyor ve
-# bombabomba.com şimdi sizden bu A/B testinin sonuçlarını analiz etmenizi bekliyor.Bombabomba.com için
-# nihai başarı ölçütü Purchase'dır. Bu nedenle, istatistiksel testler için Purchasemetriğine odaklanılmalıdır.
-
-
-
-
-#####################################################
-# Veri Seti Hikayesi
-#####################################################
-
-# Bir firmanın web site bilgilerini içeren bu veri setinde kullanıcıların gördükleri ve tıkladıkları
-# reklam sayıları gibi bilgilerin yanı sıra buradan gelen kazanç bilgileri yer almaktadır.Kontrol ve Test
-# grubu olmak üzere iki ayrı veri seti vardır. Bu veri setleriab_testing.xlsxexcel’ininayrı sayfalarında yer
-# almaktadır. Kontrol grubuna Maximum Bidding, test grubuna AverageBiddinguygulanmıştır.
-
-# impression: Reklam görüntüleme sayısı
-# Click: Görüntülenen reklama tıklama sayısı
-# Purchase: Tıklanan reklamlar sonrası satın alınan ürün sayısı
-# Earning: Satın alınan ürünler sonrası elde edilen kazanç
-
-
-
-#####################################################
-# Proje Görevleri
-#####################################################
 
 ######################################################
 # AB Testing (Bağımsız İki Örneklem T Testi)
@@ -167,7 +133,7 @@ print('Test Stat = %.4f, p-value = %.4f' % (test_stat, pvalue))
 # İki grubun ortalamaları arasında fark olup olmadığını istatistik açıdan kanıtlamak istedik.
 # Normallik varsayımı ve varyans homojenliği sonuçlarında hipotez reddedilemedi.
 # Varsayımlar sağlandığı için bağımsız iki örneklem T testi kullandık.
-# Bunun sonucunda elde edilen p değeri 0.05'ten büyük olduğu için hipotezimiz istatistik olarak  %95 güvenle doğrulandı.
+# Bunun sonucunda elde edilen p değeri 0.05'ten büyük olduğu için hipotezimiz istatistiksel olarak  %95 güvenle doğrulandı.
 # Yani iki grubun ortalamaları arasında anlamlı bir fark yoktur.
 
 
